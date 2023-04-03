@@ -21,7 +21,7 @@ def array_with_different_algorithms(array_sizes):
     for size in array_sizes:
         sorted_list = np.random.rand(size)
         for algorithm in sort_methods:
-            sorting_time_ms = timeit.timeit(lambda: np.sort(sorted_list, kind=algorithm), number=1)
+            sorting_time_ms = timeit.timeit(lambda: np.sort(sorted_list, kind=algorithm), number=1) * 1000
             a_list.append(f'Sorting time for {size} using {algorithm} is {sorting_time_ms} millisecond')
     return a_list
 
@@ -30,7 +30,7 @@ def array_with_different_algorithms(array_sizes):
 def array_and_algorithm_as_a_input(user_input_array, user_input_algo):
     a_list = []
     sorted_list = np.random.rand(user_input_array)
-    quicksort_time = timeit.timeit(lambda: np.sort(sorted_list, kind=user_input_algo), number=1)
+    quicksort_time = timeit.timeit(lambda: np.sort(sorted_list, kind=user_input_algo), number=1) * 1000
     a_list.append(f"size-{user_input_array} and sorting time-{quicksort_time} millisecond")
     return a_list
 
@@ -39,14 +39,15 @@ def array_and_algorithm_as_a_input(user_input_array, user_input_algo):
 def storing_output_in_dictionary(user_input_array, user_input_algo):
     a_dict = {}
     sorted_list = np.random.rand(user_input_array)
-    quicksort_time = timeit.timeit(lambda: np.sort(sorted_list, kind=user_input_algo), number=1)
+    quicksort_time = timeit.timeit(lambda: np.sort(sorted_list, kind=user_input_algo), number=1) * 1000
     a_dict.update({"algorithm-size":f'{user_input_algo}-{user_input_array}', "sorting_time": f"{quicksort_time:.5f}ms"})
     return a_dict
 
 
 class UI:
-    @staticmethod
-    def numpy_floating_num():
+
+    @classmethod
+    def numpy_floating_num(cls):
         print(numpy_floating_number(array_sizes))
 
     @staticmethod
@@ -83,24 +84,21 @@ class UI:
                 print(a_list)
             elif choice == 3:
                 df = pd.DataFrame(a_list)
-                df = df.set_index('algorithm-size')
-                # df2 = df.to_string(index=False)
-                # print(df2)
-                print(df.shape)
+                # df = df.set_index('algorithm-size')
+                print(df)
 
             elif choice == 4:
                 df = pd.DataFrame(a_list)
                 df.to_csv('sort_size.csv', index=False)
+
             elif choice == 5:
                 x = []
                 y = []
-
                 with open('sort_size.csv', 'r') as csvfile:
                     plots = csv.reader(csvfile, delimiter=',')
                     for row in plots:
                         x.append(row[0])
                         y.append(row[1])
-
                 plt.bar(x, y, color='g', width=0.4, label="Sorting Time")
                 plt.xlabel('algorithm-size')
                 plt.ylabel('sorting_time')
@@ -114,7 +112,6 @@ class UI:
 
 if __name__ == '__main__':
     array_sizes = [1000, 5000, 10000, 50000, 100000, 500000, 1000000]
-
     while True:
         print("Options\n1 for numpy_floating_number\n2 for array_with_different_algorithms\n3 for "
               "array_and_algorithm_as_a_input\n4 for storing_output_in_dictionary\n"
@@ -126,8 +123,7 @@ if __name__ == '__main__':
                    2: UI.array_with_different_algo,
                    3: UI.array_and_algo_as_a_input,
                    4: UI.storing_output_in_dict,
-                   5: UI.store_in_list,
-                   }
+                   5: UI.store_in_list}
         if choice == 0:
             break
         else:

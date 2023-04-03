@@ -45,7 +45,7 @@ def storing_output_in_dictionary(array, algo):
 
 
 if __name__ == '__main__':
-    array_sizes = [1000, 5000, 10000, 50000, 100000, 500000, 1000000]
+    array_sizes = [1, 2, 5, 10]
     while True:
         print("Enter 1 for step 1 or to call numpy_floating_number()")
         print("Enter 2 for step 2 or to call array_with_different_algorithms()")
