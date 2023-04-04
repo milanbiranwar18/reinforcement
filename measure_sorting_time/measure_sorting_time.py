@@ -1,8 +1,11 @@
 import timeit
-import pandas as pd
+# import pandas as pd
 import numpy as np
+# import matplotlib.pyplot as plt
+import pandas as pd
 import matplotlib.pyplot as plt
 import csv
+import seaborn as sns
 
 
 # step - 1
@@ -89,21 +92,16 @@ class UI:
 
             elif choice == 4:
                 df = pd.DataFrame(a_list)
-                df.to_csv('sort_size.csv', index=False)
+                # df.to_csv('sort_size.csv', index=False)
+                df.to_csv('sort_size.csv')
 
             elif choice == 5:
-                x = []
-                y = []
-                with open('sort_size.csv', 'r') as csvfile:
-                    plots = csv.reader(csvfile, delimiter=',')
-                    for row in plots:
-                        x.append(row[0])
-                        y.append(row[1])
-                plt.bar(x, y, color='g', width=0.4, label="Sorting Time")
-                plt.xlabel('algorithm-size')
-                plt.ylabel('sorting_time')
-                plt.title('sorting time of various algorithm')
-                plt.legend()
+                df = pd.read_csv('sort_size.csv')
+                fig, ax = plt.subplots()
+                ax.bar(df['algorithm-size'], df['sorting_time'])
+                ax.set_xlabel('Algorithm and Size')
+                ax.set_ylabel('Sorting Time (ms)')
+                ax.set_title('Sorting Time vs Algorithm and Size')
                 plt.show()
 
             elif choice == 0:

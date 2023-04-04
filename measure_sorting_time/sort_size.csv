@@ -1,3 +1,5 @@
-algorithm-size,sorting_time
-mergesort-1000,0.00013ms
-heapsort-300,0.00006ms
+,algorithm-size,sorting_time
+0,heapsort-1000000,174.61440ms
+1,mergesort-200,0.06870ms
+2,quicksort-5000,0.32980ms
+3,mergesort-600,0.07520ms
