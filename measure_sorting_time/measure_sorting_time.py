@@ -2,10 +2,13 @@ import timeit
 # import pandas as pd
 import numpy as np
 # import matplotlib.pyplot as plt
-import pandas as pd
+# import pandas as pd
 import matplotlib.pyplot as plt
 import csv
 import seaborn as sns
+import pandas as pd
+from matplotlib import pyplot as plt
+import matplotlib.dates as mdates
 
 
 # step - 1
@@ -96,12 +99,38 @@ class UI:
                 df.to_csv('sort_size.csv')
 
             elif choice == 5:
+                # Read the data from CSV file
                 df = pd.read_csv('sort_size.csv')
+
+                # Initialize a dictionary for algorithms
+                data = dict()
+
+                # Store each line in the dictionary
+                for _, row in df.iterrows():
+                    algorithm = row['algorithm-size']
+                    sorting_time = row['sorting_time']
+
+                    data[algorithm] = float(sorting_time[:-2])
+
+                # Define the positions for the subplots
+                positions = [0, 1]
+
+                # Plot the subgraphs
                 fig, ax = plt.subplots()
-                ax.bar(df['algorithm-size'], df['sorting_time'])
-                ax.set_xlabel('Algorithm and Size')
-                ax.set_ylabel('Sorting Time (ms)')
-                ax.set_title('Sorting Time vs Algorithm and Size')
+                for i, l in enumerate(data.keys()):
+                    ax.bar(x=l, height=data[l], color='g')
+                    ax.text(l, data[l] + 0.2, f"{data[l]:.2f}ms", ha='center')
+
+                # Set the y-axis range to start at 0
+                ax.set_ylim(bottom=0)
+
+                # Set the x-axis label
+                ax.set_xlabel('Algorithm')
+
+                # Set the title
+                ax.set_title('Sorting Algorithms')
+
+                # Show the plot
                 plt.show()
 
             elif choice == 0:
