@@ -1,3 +1,4 @@
 ,algorithm-size,sorting_time
-0,heapsort-1000,0.09950ms
-1,mergesort-200000,18.60290ms
+0,heapsort-1000,0.11010ms
+1,mergesort-200000,19.37250ms
+2,heapsort-100000,11.11780ms

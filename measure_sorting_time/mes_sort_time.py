@@ -147,7 +147,6 @@ def store_in_list():
 
 if __name__ == '__main__':
 
-    # array_sizes = [1000, 5000, 10000, 50000, 100000, 500000, 1000000]
     while True:
         print("Options\n1 for numpy_floating_number\n2 for array_with_different_algorithms\n3 for "
               "array_and_algorithm_as_a_input\n4 for storing_output_in_dictionary\n"
