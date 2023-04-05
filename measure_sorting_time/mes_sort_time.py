@@ -85,43 +85,24 @@ def choice_three():
 
 def choice_four():
     df = pd.DataFrame(a_list)
-    # df.to_csv('sort_size.csv', index=False)
     df.to_csv('sort_size.csv')
 
 
 def choice_five():
-    # Read the data from CSV file
     df = pd.read_csv('sort_size.csv')
-
-    # Initialize a dictionary for algorithms
     data = dict()
-
-    # Store each line in the dictionary
     for _, row in df.iterrows():
         algorithm = row['algorithm-size']
         sorting_time = row['sorting_time']
-
         data[algorithm] = float(sorting_time[:-2])
-
-    # Define the positions for the subplots
     positions = [0, 1]
-
-    # Plot the subgraphs
     fig, ax = plt.subplots()
     for i, l in enumerate(data.keys()):
         ax.bar(x=l, height=data[l], color='g')
         ax.text(l, data[l] + 0.2, f"{data[l]:.2f}ms", ha='center')
-
-    # Set the y-axis range to start at 0
     ax.set_ylim(bottom=0)
-
-    # Set the x-axis label
     ax.set_xlabel('Algorithm')
-
-    # Set the title
     ax.set_title('Sorting Algorithms')
-
-    # Show the plot
     plt.show()
 
 
