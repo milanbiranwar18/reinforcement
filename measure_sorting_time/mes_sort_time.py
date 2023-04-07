@@ -111,7 +111,7 @@ def store_in_list():
     while True:
         print("1 for calculating sorting time in milliseconds using algorithm for size\n2 for output\n"
               "3 To convert list of dict to pandas dataframe\n4 To convert list of dict to csv file\n"
-              "5 for performance data\n0 for exist")
+              "5 for performance data plot graph\n0 for exist")
 
         choice = int(input("Enter any option : "))
 
