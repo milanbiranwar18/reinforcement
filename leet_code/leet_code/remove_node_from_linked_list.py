@@ -15,10 +15,8 @@
 # Input: head = [1,1,1,1]
 # Output: [1,1,1,1]
 # Explanation: Every node has value 1, so no nodes are removed.
-#
-
-
 # Definition for singly-linked list.
+
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
