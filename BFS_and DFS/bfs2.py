@@ -1,13 +1,17 @@
 def bfs(visited, graph, node):  # function for BFS
     queue = []  # Initialize a queue
     visited.append(node)
+    # print(visited)
     queue.append(node)
+    # print(queue)
 
     while queue:  # Creating loop to visit each node
+        # print(queue)
         m = queue.pop(0)
         print(m, end=" ")
-
+        # print(graph[m], 123)
         for neighbour in graph[m]:
+            # print(neighbour)
             if neighbour not in visited:
                 visited.append(neighbour)
                 queue.append(neighbour)
