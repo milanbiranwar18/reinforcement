@@ -30,7 +30,27 @@ class LinkedList:
             n = self.head            # Whatever the ref stored in head that assigning to n now n is first node
             while n.ref is not None:    # using while loop to go to last node
                 n = n.ref
+            print()
             n.ref = new_node            # changing the reference of the last node to newly created node
+
+    # def travers(self, data):
+    #     new_node = Node(data)  # creating node
+    #     if self.head is None:  # checking linked list is empty or not
+    #         self.head = new_node
+    #     else:
+    #         n = self.head
+    #         while n is not None:
+    #             if n.ref is None:
+    #                 return n
+    #             n = n.ref
+    #
+    # def add_end(self, data):
+    #     new_node = Node(data)        # creating node
+    #     if self.head is None:        # checking linked list is empty or not
+    #         self.head = new_node     # if linked list is empty storing ref of new node to head
+    #     else:
+    #         obj = self.travers()
+    #         obj.ref = new_node            # changing the reference of the last node to newly created node
 
     def add_after(self, data, x):
         n = self.head
@@ -111,8 +131,8 @@ if __name__ == '__main__':
     linked_list = LinkedList()
     linked_list.add_begin(10)
     linked_list.add_begin(20)
-    linked_list.add_after(200, 10)
-    linked_list.add_before(102, 10)
+    # linked_list.add_after(200, 10)
+    # linked_list.add_before(102, 10)
     linked_list.add_end(1000)
     # linked_list.insert_if_empty(10)
     # linked_list.insert_if_empty(20)
