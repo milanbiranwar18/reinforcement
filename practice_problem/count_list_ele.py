@@ -13,12 +13,14 @@ def count_list_ele(a_list):
     for i in a_list:
         if i not in a_dict.keys():
             a_dict.update({i: 1})
-        elif i in a_dict.keys():
+        # elif i in a_dict.keys():
+        else:
             a_dict.update({i: (a_dict.get(i) + 1)})
     return a_dict
 
 
 if __name__ == '__main__':
+
     print(count_same_num([1, 1, 1, 2, 3, 1, 5, 5, 4, 6, 6, 5, 4, 2, 2, 3, 4, 5]))
 
     print(count_list_ele([1, 1, 1, 2, 3, 1, 5, 5, 4, 6, 6, 5, 4, 2, 2, 3, 4, 5]))

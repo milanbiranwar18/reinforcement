@@ -12,6 +12,7 @@ def sum_of_digit(num):
 
 if __name__ == '__main__':
     print(sum_of_digit(7812))
+    print(sum_of_digit(6556))
     print(sum_of_digit(90))
     print(sum_of_digit(101))
 
